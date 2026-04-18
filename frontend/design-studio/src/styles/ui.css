@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AgenticAI Design System Layer */
+@layer components {
+  .ds-card {
+    @apply bg-white border border-gray-200 rounded-xl shadow-sm p-5;
+  }
+
+  .ds-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm 
+           focus:ring-blue-500 focus:border-blue-500 bg-white;
+  }
+
+  .ds-textarea {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm 
+           focus:ring-blue-500 focus:border-blue-500 bg-white min-h-[70px];
+  }
+
+  .ds-select {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm 
+           focus:ring-blue-500 focus:border-blue-500 bg-white;
+  }
+
+  .ds-btn-primary {
+    @apply px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition;
+  }
+
+  .ds-btn-secondary {
+    @apply px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition;
+  }
+
+  .ds-btn-success {
+    @apply px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition;
+  }
+
+  .ds-btn-disabled {
+    @apply px-4 py-2 bg-gray-300 text-white rounded-md cursor-not-allowed;
+  }
+
+  .ds-section-title {
+    @apply text-lg font-semibold mb-2;
+  }
+
+  .ds-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+}

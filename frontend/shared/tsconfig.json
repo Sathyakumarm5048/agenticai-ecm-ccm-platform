@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["components", "hooks", "utils", "types"],
+  "exclude": ["node_modules"]
+}

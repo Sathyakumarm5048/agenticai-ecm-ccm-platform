@@ -1,0 +1,37 @@
+{
+  "name": "agenticai-frontend",
+  "version": "1.0.0",
+  "description": "AgenticAI Platform - Interactive Workflow & Execution Management",
+  "private": true,
+  "workspaces": [
+    "design-studio",
+    "experience-ui",
+    "admin-console",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=design-studio & npm run dev --workspace=experience-ui & npm run dev --workspace=admin-console",
+    "dev:studio": "npm run dev --workspace=design-studio",
+    "dev:experience": "npm run dev --workspace=experience-ui",
+    "dev:admin": "npm run dev --workspace=admin-console",
+    "build": "npm run build --workspace=shared && npm run build --workspaces",
+    "build:studio": "npm run build --workspace=design-studio",
+    "build:experience": "npm run build --workspace=experience-ui",
+    "build:admin": "npm run build --workspace=admin-console",
+    "preview": "npm run preview --workspace=design-studio & npm run preview --workspace=experience-ui & npm run preview --workspace=admin-console",
+    "test": "npm run test --workspaces",
+    "test:watch": "npm run test:watch --workspaces",
+    "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
+    "type-check": "npm run type-check --workspaces"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.3.3",
+    "eslint-plugin-react-refresh": "^0.4.6"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

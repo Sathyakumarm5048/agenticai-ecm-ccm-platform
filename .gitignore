@@ -1,0 +1,41 @@
+# Node
+node_modules/
+.pnpm-store/
+.pnpm-debug.log
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+debug.log
+
+# Docker volumes
+infrastructure/docker/**/data/
+infrastructure/docker/**/logs/
+
+# Neo4j
+**/neo4j/data/
+**/neo4j/logs/
+
+# Kafka
+**/kafka/data/
+
+# Postgres
+**/postgres/data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
