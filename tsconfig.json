@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./frontend/shared" },
+    { "path": "./frontend/design-studio" },
+    { "path": "./frontend/admin-console" },
+    { "path": "./frontend/experience-ui" }
+  ]
+}

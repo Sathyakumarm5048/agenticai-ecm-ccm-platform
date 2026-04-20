@@ -12,7 +12,7 @@ export function useApi<T = any>() {
         setError(null);
 
         const response = await axios({
-          baseURL: process.env.VITE_API_URL || "http://localhost:8000",
+          baseURL: import.meta.env.VITE_API_URL || "http://localhost:8000",
           ...config,
         });
 

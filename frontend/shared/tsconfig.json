@@ -1,18 +1,18 @@
 {
-  "extends": "../tsconfig.base.json",
   "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "declaration": true,
     "declarationMap": false,
     "sourceMap": false,
     "outDir": "./dist",
-
-    // Required for process.env
-    "types": ["node"]
+    "rootDir": "./src",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false
   },
-
-  // Include entire shared source
   "include": ["src"],
-
-  // Never compile built output
   "exclude": ["node_modules", "dist"]
 }
