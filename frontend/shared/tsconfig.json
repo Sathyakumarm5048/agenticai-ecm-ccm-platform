@@ -2,13 +2,17 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
+    "declarationMap": false,
+    "sourceMap": false,
     "outDir": "./dist",
-    "paths": {
-      "@/*": ["./*"]
-    }
+
+    // Required for process.env
+    "types": ["node"]
   },
-  "include": ["components", "hooks", "utils", "types"],
-  "exclude": ["node_modules"]
+
+  // Include entire shared source
+  "include": ["src"],
+
+  // Never compile built output
+  "exclude": ["node_modules", "dist"]
 }

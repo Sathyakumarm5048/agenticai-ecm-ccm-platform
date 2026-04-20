@@ -16,7 +16,7 @@ import ReactFlow, {
 } from 'reactflow'
 import 'reactflow/dist/style.css'
 import { Box, Card, CardContent, Typography } from '@mui/material'
-import { WorkflowDefinition, WorkflowStep } from '../../../shared/types'
+import { WorkflowDefinition, WorkflowStep } from '../../../shared/src/types'
 
 interface WorkflowCanvasProps {
   workflow: WorkflowDefinition | null
