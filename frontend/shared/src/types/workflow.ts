@@ -1,28 +1,43 @@
-import { WorkflowStep } from "./step.js";
+// frontend/shared/src/types/workflow.ts
 
-export interface Workflow {
-  id: string;
+export type WorkflowStepType = "connector" | "agent" | "branch";
+
+export interface WorkflowStep {
+  step_id: string;
   name: string;
   description?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  steps: WorkflowStep[];
+  step_type: WorkflowStepType;
+  order: number;
+  config?: Record<string, unknown>;
 }
 
-/**
- * Full workflow definition used by the builder, API, and runtime.
- * This is what your UI and backend expect when loading a workflow.
- */
 export interface WorkflowDefinition {
   id: string;
+  workflow_id: string;
   name: string;
   description?: string;
   version: number;
   published: boolean;
   enabled: boolean;
-  tags: string[];
+
+  trigger_events: string[];
+  guardrails?: string[];
+  requires_approval?: boolean;
+  approval_roles?: string[];
+
+  created_by: string;
   created_at: string;
   modified_at: string;
-  schedule?: string;
+
   steps: WorkflowStep[];
+}
+
+export interface NewWorkflowDefinition {
+  name: string;
+  description?: string;
+  trigger_events: string[];
+  guardrails?: string[];
+  requires_approval?: boolean;
+  approval_roles?: string[];
+  enabled?: boolean;
 }
