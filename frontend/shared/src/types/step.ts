@@ -7,17 +7,32 @@ export type StepType =
   | "end";
 
 export interface WorkflowStep {
-  id: string;
-  type: StepType;
+  /** Unique workflow step ID (your domain model) */
+  step_id: string;
+
+  /** Domain-level step type */
+  step_type: StepType;
+
+  /** Display name */
   name: string;
   description?: string;
 
-  // Graph positioning (ReactFlow)
-  position?: { x: number; y: number };
+  /** ReactFlow node ID (mirrors step_id) */
+  id: string;
 
-  // Step-specific configuration
+  /** ReactFlow node type */
+  type?: string;
+
+  /** ReactFlow node position */
+  position: {
+    x: number;
+    y: number;
+  };
+
+  /** ReactFlow node data */
+  data?: Record<string, any>;
+
+  /** Workflow logic */
+  next?: string[];
   config?: Record<string, any>;
-
-  // Connections
-  next?: string[]; // IDs of next steps
 }

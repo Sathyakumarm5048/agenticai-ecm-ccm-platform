@@ -1,5 +1,19 @@
 {
   "name": "agenticai-platform",
   "private": true,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "workspaces": [
+    "frontend/design-studio",
+    "frontend/admin-console",
+    "frontend/shared"
+  ],
+  "dependencies": {
+    "@mui/icons-material": "5.15.15",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.15",
+    "@types/react-dom": "18.2.7"
+  }
 }

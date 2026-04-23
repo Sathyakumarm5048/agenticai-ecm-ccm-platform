@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
-import { Workflow } from "../types/workflow";
-import { WorkflowStep } from "../types/step";
+import { Workflow } from "../types/workflow.js";
+import { WorkflowStep } from "../types/step.js";
 
 export function useWorkflow(initial?: Workflow) {
   const [workflow, setWorkflow] = useState<Workflow>(

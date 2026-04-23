@@ -19,7 +19,7 @@ import {
 import HistoryIcon from '@mui/icons-material/History'
 import RestoreIcon from '@mui/icons-material/Restore'
 import CompareIcon from '@mui/icons-material/Compare'
-import { formatDateTime } from '@shared/utils'
+import { formatDateTime } from "@agenticai/shared"
 
 export default function VersionHistory(): JSX.Element {
   const { workflowId } = useParams()

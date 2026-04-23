@@ -1,8 +1,8 @@
-export { Card } from "./Card";
-export { Checkbox } from "./Checkbox";
-export { Layout } from "./Layout";
-export { LoadingSpinner } from "./LoadingSpinner";
-export { Modal } from "./Modal";
-export { PrimaryButton } from "./PrimaryButton";
-export { Select } from "./Select";
-export { TextInput } from "./TextInput";
+export * from "./Card.js";
+export * from "./Layout.js";
+export * from "./Checkbox.js";
+export * from "./Select.js";
+export * from "./PrimaryButton.js";
+export * from "./TextInput.js";
+export * from "./Modal.js";
+export * from "./LoadingSpinner.js";

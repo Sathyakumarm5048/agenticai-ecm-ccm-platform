@@ -3,29 +3,22 @@
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": "./dist/index.js",
-    "./components": "./dist/components/index.js",
-    "./utils": "./dist/utils/index.js",
-    "./hooks": "./dist/hooks/index.js",
-    "./types": "./dist/types/index.js"
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsc -p tsconfig.json"
-  },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.2.5",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "typescript": "^6.0.3",
-    "@types/node": "^20.0.0"
+    "@types/react": "18.2.15",
+    "@types/react-dom": "18.2.7",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.0"
+  },
+  "scripts": {
+    "build": "tsup && tsc -p tsconfig.json --emitDeclarationOnly"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.8.3"
   }
 }
