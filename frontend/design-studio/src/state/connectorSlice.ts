@@ -1,12 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ConnectorMetadata, ConnectorConnection } from '@shared/types'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ConnectorMetadata, ConnectorConnection } from "@shared/types";
 
 interface ConnectorState {
-  availableConnectors: ConnectorMetadata[]
-  connections: Map<string, ConnectorConnection>
-  selectedConnectionId: string | null
-  loading: boolean
-  error: string | null
+  availableConnectors: ConnectorMetadata[];
+  connections: Map<string, ConnectorConnection>;
+  selectedConnectionId: string | null;
+  loading: boolean;
+  error: string | null;
 }
 
 const initialState: ConnectorState = {
@@ -15,37 +15,47 @@ const initialState: ConnectorState = {
   selectedConnectionId: null,
   loading: false,
   error: null,
-}
+};
 
 const connectorSlice = createSlice({
-  name: 'connectors',
+  name: "connectors",
   initialState,
   reducers: {
-    setAvailableConnectors: (state, action: PayloadAction<ConnectorMetadata[]>) => {
-      state.availableConnectors = action.payload
-      state.error = null
+    setAvailableConnectors: (
+      state,
+      action: PayloadAction<ConnectorMetadata[]>
+    ) => {
+      state.availableConnectors = action.payload;
+      state.error = null;
     },
+
     addConnection: (state, action: PayloadAction<ConnectorConnection>) => {
-      state.connections.set(action.payload.connection_id, action.payload)
+      // FIX: use conn.id instead of conn.connection_id
+      state.connections.set(action.payload.id, action.payload);
     },
+
     setConnections: (state, action: PayloadAction<ConnectorConnection[]>) => {
-      state.connections.clear()
+      state.connections.clear();
       action.payload.forEach((conn) => {
-        state.connections.set(conn.connection_id, conn)
-      })
+        // FIX: use conn.id
+        state.connections.set(conn.id, conn);
+      });
     },
+
     selectConnection: (state, action: PayloadAction<string | null>) => {
-      state.selectedConnectionId = action.payload
+      state.selectedConnectionId = action.payload;
     },
+
     setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload
+      state.loading = action.payload;
     },
+
     setError: (state, action: PayloadAction<string | null>) => {
-      state.error = action.payload
-      state.loading = false
+      state.error = action.payload;
+      state.loading = false;
     },
   },
-})
+});
 
 export const {
   setAvailableConnectors,
@@ -54,5 +64,6 @@ export const {
   selectConnection,
   setLoading,
   setError,
-} = connectorSlice.actions
-export default connectorSlice.reducer
+} = connectorSlice.actions;
+
+export default connectorSlice.reducer;

@@ -1,55 +1,17 @@
-import { Box, CircularProgress, Typography, LinearProgress, keyframes } from "@mui/material";
+import React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import CircularProgress from "@mui/material/CircularProgress";
+// import your pulse keyframes if used
+// import { pulse } from "./styles"; // example
 
-export interface LoadingSpinnerProps {
-  message?: string;
-  variant?: "circular" | "linear" | "pulse";
-  size?: "small" | "medium" | "large";
-}
+export const LoadingSpinner: React.FC = () => {
+  const spinnerSize = 48;
 
-const pulse = keyframes`
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
-`;
-
-const sizeMap = {
-  small: 32,
-  medium: 48,
-  large: 64,
-} as const;
-
-export const LoadingSpinner = ({
-  message = "Loading…",
-  variant = "circular",
-  size = "medium",
-}: LoadingSpinnerProps): JSX.Element => {
-  const spinnerSize = sizeMap[size];
-
-  const renderSpinner = () => {
-    switch (variant) {
-      case "linear":
-        return (
-          <Box sx={{ width: "100%", maxWidth: 400 }}>
-            <LinearProgress sx={{ height: 6, borderRadius: 3 }} />
-          </Box>
-        );
-
-      case "pulse":
-        return (
-          <Box
-            sx={{
-              width: spinnerSize,
-              height: spinnerSize,
-              borderRadius: "50%",
-              bgcolor: "primary.main",
-              animation: `${pulse} 1.5s ease-in-out infinite`,
-            }}
-          />
-        );
-
-      default:
-        return <CircularProgress size={spinnerSize} />;
-    }
+  const renderSpinner = (): React.ReactNode => {
+    // If you use a custom animated spinner, return JSX here
+    // Example: return <div style={{ animation: `${pulse} 1.5s ease-in-out infinite` }} />;
+    return <CircularProgress size={spinnerSize} />;
   };
 
   return (
@@ -64,18 +26,11 @@ export const LoadingSpinner = ({
       }}
     >
       {renderSpinner()}
-
-      <Typography
-        variant="body1"
-        color="text.secondary"
-        sx={{
-          mt: 2,
-          textAlign: "center",
-          animation: variant === "pulse" ? `${pulse} 2s ease-in-out infinite` : "none",
-        }}
-      >
-        {message}
+      <Typography variant="body2" sx={{ mt: 2 }}>
+        Loading...
       </Typography>
     </Box>
   );
 };
+
+export default LoadingSpinner;

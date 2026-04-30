@@ -10,43 +10,59 @@ import {
   Stack,
   Tooltip,
   Typography,
-} from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
-import PlayArrowIcon from '@mui/icons-material/PlayArrow'
-import ScheduleIcon from '@mui/icons-material/Schedule'
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'
-import { useNavigate } from 'react-router-dom'
-import { formatDateTime } from '@agenticai/shared'
+} from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { useNavigate } from "react-router-dom";
+import { formatDateTime } from "@shared";
+import { WorkflowDefinition } from "@shared/types";
 
-export default function WorkflowCard({ workflow, deleting, onDelete }) {
-  const navigate = useNavigate()
+interface WorkflowCardProps {
+  workflow: WorkflowDefinition;
+  deleting: boolean;
+  onDelete: (id: string) => void;
+}
+
+export default function WorkflowCard({
+  workflow,
+  deleting,
+  onDelete,
+}: WorkflowCardProps): JSX.Element {
+  const navigate = useNavigate();
 
   return (
     <Card
       variant="outlined"
       sx={{
-        minHeight: 280,
-        display: 'flex',
-        flexDirection: 'column',
-        transition: 'all 0.2s ease-in-out',
-        '&:hover': { boxShadow: 3, transform: 'translateY(-2px)' },
+        minHeight: 260,
+        display: "flex",
+        flexDirection: "column",
+        transition: "all 0.2s ease-in-out",
+        "&:hover": { boxShadow: 3, transform: "translateY(-2px)" },
       }}
     >
       <CardContent sx={{ flexGrow: 1, pb: 1 }}>
         {/* Header */}
-        <Stack direction="row" justifyContent="space-between" alignItems="flex-start" sx={{ mb: 2 }}>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="flex-start"
+          sx={{ mb: 2 }}
+        >
           <Stack direction="row" alignItems="center" spacing={1}>
             <Avatar
               sx={{
                 width: 32,
                 height: 32,
-                bgcolor: workflow.published ? 'success.main' : 'warning.main',
-                fontSize: '0.875rem',
+                bgcolor: workflow.published ? "success.main" : "warning.main",
+                fontSize: "0.875rem",
               }}
             >
               {workflow.name.charAt(0).toUpperCase()}
             </Avatar>
+
             <Box>
               <Typography variant="h6" sx={{ lineHeight: 1.2 }}>
                 {workflow.name}
@@ -59,11 +75,12 @@ export default function WorkflowCard({ workflow, deleting, onDelete }) {
 
           <Stack direction="row" spacing={0.5}>
             <Chip
-              label={workflow.published ? 'PUBLISHED' : 'DRAFT'}
+              label={workflow.published ? "PUBLISHED" : "DRAFT"}
               size="small"
-              color={workflow.published ? 'success' : 'warning'}
-              variant={workflow.published ? 'filled' : 'outlined'}
+              color={workflow.published ? "success" : "warning"}
+              variant={workflow.published ? "filled" : "outlined"}
             />
+
             {workflow.enabled ? (
               <Chip
                 label="ENABLED"
@@ -80,35 +97,25 @@ export default function WorkflowCard({ workflow, deleting, onDelete }) {
 
         {/* Description */}
         <Typography color="text.secondary" sx={{ mb: 2, minHeight: 40 }}>
-          {workflow.description || 'No description available'}
+          {workflow.description || "No description available"}
         </Typography>
-
-        {/* Tags */}
-        <Stack direction="row" spacing={1} sx={{ mb: 2, flexWrap: 'wrap', gap: 0.5 }}>
-          {workflow.tags.map((tag) => (
-            <Chip key={tag} label={tag} size="small" variant="outlined" sx={{ fontSize: '0.75rem' }} />
-          ))}
-        </Stack>
 
         {/* Metadata */}
         <Stack spacing={0.5}>
-          <MetaRow label="Created:" value={formatDateTime(workflow.created_at)} />
-          <MetaRow label="Modified:" value={formatDateTime(workflow.modified_at)} />
-
-          {workflow.schedule && (
-            <Stack direction="row" alignItems="center" spacing={1}>
-              <ScheduleIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
-              <Typography variant="body2" color="text.secondary">
-                Scheduled: {workflow.schedule}
-              </Typography>
-            </Stack>
-          )}
+          <MetaRow
+            label="Created:"
+            value={formatDateTime(workflow.created_at)}
+          />
+          <MetaRow
+            label="Modified:"
+            value={formatDateTime(workflow.modified_at)}
+          />
         </Stack>
       </CardContent>
 
       {/* Actions */}
       <CardActions sx={{ pt: 0, px: 2, pb: 2 }}>
-        <Stack direction="row" spacing={1} sx={{ width: '100%' }}>
+        <Stack direction="row" spacing={1} sx={{ width: "100%" }}>
           <Button
             size="small"
             variant="outlined"
@@ -123,7 +130,9 @@ export default function WorkflowCard({ workflow, deleting, onDelete }) {
             <IconButton
               size="small"
               color="primary"
-              onClick={() => navigate(`/builder/${workflow.workflow_id}?test=true`)}
+              onClick={() =>
+                navigate(`/builder/${workflow.workflow_id}?test=true`)
+              }
             >
               <PlayArrowIcon />
             </IconButton>
@@ -142,10 +151,15 @@ export default function WorkflowCard({ workflow, deleting, onDelete }) {
         </Stack>
       </CardActions>
     </Card>
-  )
+  );
 }
 
-function MetaRow({ label, value }) {
+interface MetaRowProps {
+  label: string;
+  value: string;
+}
+
+function MetaRow({ label, value }: MetaRowProps): JSX.Element {
   return (
     <Stack direction="row" alignItems="center" spacing={1}>
       <Typography variant="body2" color="text.secondary" sx={{ minWidth: 80 }}>
@@ -153,5 +167,5 @@ function MetaRow({ label, value }) {
       </Typography>
       <Typography variant="body2">{value}</Typography>
     </Stack>
-  )
+  );
 }

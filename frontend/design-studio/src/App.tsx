@@ -1,23 +1,23 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
-import { Box } from '@mui/material'
-import { Layout } from '@shared/components'
-import WorkflowBuilder from './pages/WorkflowBuilder'
-import WorkflowList from './pages/WorkflowList'
-import VersionHistory from './pages/VersionHistory'
-import Templates from './pages/Templates'
-import Configuration from './pages/Configuration'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
+import { Layout } from "@shared";
+import WorkflowBuilder from "./pages/WorkflowBuilder";
+import WorkflowList from "./pages/WorkflowList";
+import VersionHistory from "./pages/VersionHistory";
+import Templates from "./pages/Templates";
+import Configuration from "./pages/Configuration";
 
 function AppShell(): JSX.Element {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <Layout
       title="AgenticAI Design Studio"
       navItems={[
-        { label: 'Workflows', href: '/' },
-        { label: 'Templates', href: '/templates' },
-        { label: 'History', href: '/versions' },
-        { label: 'Configuration', href: '/admin' },
+        { label: "Workflows", href: "/" },
+        { label: "Templates", href: "/templates" },
+        { label: "History", href: "/versions" },
+        { label: "Configuration", href: "/admin" },
       ]}
       onNavigate={navigate}
     >
@@ -33,7 +33,7 @@ function AppShell(): JSX.Element {
         </Routes>
       </Box>
     </Layout>
-  )
+  );
 }
 
 export default function App(): JSX.Element {
@@ -41,6 +41,5 @@ export default function App(): JSX.Element {
     <Router>
       <AppShell />
     </Router>
-  )
+  );
 }
-

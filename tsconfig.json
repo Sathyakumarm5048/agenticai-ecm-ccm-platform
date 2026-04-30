@@ -1,23 +1,29 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["DOM", "DOM.Iterable", "ES2020"],
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "jsx": "react-jsx",
-    "strict": true,
-    "esModuleInterop": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@shared/*": ["frontend/shared/src/*"]
+      "@shared": ["frontend/shared/src/index.ts"],
+      "@shared/*": ["frontend/shared/src/*"],
+      "@agenticai/shared": ["frontend/shared/src/index.ts"]
     },
-    "ignoreDeprecations": "7.0"
+    "ignoreDeprecations": "6.0"
   },
-  "include": ["frontend/**/*"]
+  "files": [],
+  "references": []
 }

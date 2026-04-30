@@ -1,24 +1,9 @@
 {
   "name": "@agenticai/shared",
   "version": "1.0.0",
-  "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
   "peerDependencies": {
-    "react": "^19.2.5",
-    "react-dom": "^19.2.3"
-  },
-  "devDependencies": {
-    "@types/react": "18.2.15",
-    "@types/react-dom": "18.2.7",
-    "tsup": "^8.5.1",
-    "typescript": "^5.7.0"
-  },
-  "scripts": {
-    "build": "tsup && tsc -p tsconfig.json --emitDeclarationOnly"
-  },
-  "dependencies": {
-    "socket.io-client": "^4.8.3"
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   }
 }

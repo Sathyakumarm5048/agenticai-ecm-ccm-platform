@@ -9,3 +9,4 @@ export * from "./utils";
 
 // Types
 export * from "./types";
+export { formatDateTime } from "./utils/date";
